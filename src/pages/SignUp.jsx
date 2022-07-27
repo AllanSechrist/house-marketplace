@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import {
   getAuth,
@@ -45,15 +46,15 @@ function SignUp() {
         displayName: name,
       });
 
-      navigate("/");
-
+      
       const formDataCopy = { ...formData }; // make a copy to avoid changing information in the original form data
       delete formDataCopy.password; //ensure that user password is not sent to the data base
       formDataCopy.timestamp = serverTimestamp(); // add a time stamp to the object
-
+      
       await setDoc(doc(db, "users", user.uid), formDataCopy);
+      navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error("Something Went Wrong")
     }
   };
 
