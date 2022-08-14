@@ -13,6 +13,7 @@ import Category from "./pages/Category";
 import CreateListing from "./pages/CreateListing";
 import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
+import "swiper/css/bundle";
 
 function App() {
   return (
